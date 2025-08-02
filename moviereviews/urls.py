@@ -19,6 +19,9 @@ from django.contrib import admin
 from django.urls import path
 from movie import views as movieviews
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -26,3 +29,5 @@ urlpatterns = [
     path("", movieviews.home, name="home"),
     path("about/", movieviews.about, name="about"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
