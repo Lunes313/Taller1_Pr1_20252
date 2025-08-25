@@ -7,3 +7,5 @@ class Movie(models.Model):
     descripcion = models.CharField(max_length=250)
     image = models.ImageField(upload_to='movie/images/')
     url = models.URLField(blank=True)
+    genre = models.CharField(blank=True, max_length=250)
+    year = models.CharField(blank=True, null=True)
