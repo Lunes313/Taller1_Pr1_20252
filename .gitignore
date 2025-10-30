@@ -1,2 +1,5 @@
- *.pyc
- 
+*.pyc
+
+openAI.env
+*.env
+.env

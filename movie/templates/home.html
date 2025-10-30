@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
+
 {% block content %}
+
+<div class="container mt-5">
+    <!-- Formulario de recomendación arriba del buscador -->
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-8 text-center">
+            <form method="post" class="mb-3">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input type="text" name="prompt" class="form-control" placeholder="Describe la película que buscas" required>
+                    <button type="submit" class="btn btn-primary">Recomendar</button>
+                </div>
+            </form>
+            {% if recommended %}
+                <div class="alert alert-info mt-3">
+                    <h5>Película recomendada:</h5>
+                    <strong>{{ recommended.title }}</strong><br>
+                    <img src="{{ recommended.image.url }}" alt="{{ recommended.title }}" style="max-width:200px; margin-top:10px; margin-bottom:10px; border-radius:5px;"><br>
+                    Similitud: {{ similarity|floatformat:4 }}<br>
+                    <small>{{ recommended.descripcion }}</small>
+                </div>
+            {% elif prompt %}
+                <div class="alert alert-warning mt-3">No se encontró ninguna película similar.</div>
+            {% endif %}
+        </div>
+    </div>
 
 <div class="container mt-5">
     <!-- Buscador centrado -->

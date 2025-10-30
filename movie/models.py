@@ -6,6 +6,7 @@ class Movie(models.Model):
     title = models.CharField(max_length=100)
     descripcion = models.CharField(max_length=250)
     image = models.ImageField(upload_to='movie/images/')
+    emb = models.BinaryField(null=True, blank=True)
     url = models.URLField(blank=True)
     genre = models.CharField(blank=True, max_length=250)
     year = models.CharField(blank=True, null=True)
